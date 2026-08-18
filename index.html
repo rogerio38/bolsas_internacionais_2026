@@ -51,7 +51,7 @@
                 </button>
                 <h2 id="exchange-name" class="text-3xl font-bold text-blue-400"></h2>
             </div>
-            
+
             <div class="overflow-x-auto bg-gray-800 rounded-lg shadow-md">
                 <table class="min-w-full leading-normal">
                     <thead>
@@ -126,7 +126,7 @@
             if (selectedExchange) {
                 exchangeNameHeader.textContent = selectedExchange.name;
                 etfsTableBody.innerHTML = ''; // Clear previous rows
-                
+
                 let lastUpdatedDateTime = '';
                 if (selectedExchange.etfs.length > 0 && selectedExchange.etfs[0].last_updated) {
                     const date = new Date(selectedExchange.etfs[0].last_updated);
