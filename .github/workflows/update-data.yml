@@ -1,5 +1,5 @@
 ```yaml
-name: Monthly Data Update
+name: "Monthly Data Update"
 
 on:
   schedule:
