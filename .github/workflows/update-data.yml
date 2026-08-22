@@ -1,0 +1,143 @@
+name: Monthly Data Update
+
+on:
+  schedule:
+    # Executa no primeiro dia de cada mês, à meia-noite UTC.
+    # Para testar, você pode mudar para algo mais frequente, como '0 */6 * * *' (a cada 6 horas)
+    # ou '0 0 * * *' (todo dia à meia-noite).
+    # Mais sobre sintaxe cron: https://crontab.guru/
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Permite disparar o workflow manualmente na aba Actions
+
+jobs:
+  update-etf-data:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        # O token de acesso pessoal (PAT) é necessário para que o workflow possa fazer push de volta para o repositório.
+        # uses: actions/checkout@v4 requer permissão `contents: write` para o token. `GITHUB_TOKEN` geralmente tem essa permissão por padrão.
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install yfinance
+        pip install pandas
+        pip install frozendict
+        pip install peewee
+        pip install beautifulsoup4
+        pip install curl_cffi
+        pip install protobuf
+        pip install websockets
+
+    - name: Run data scraping script
+      id: run-scraper # Adiciona um ID para este passo
+      run: |
+        python -c '
+import yfinance as yf
+import json
+from datetime import datetime
+import time
+
+EXCHANGES_DATA = [
+    {"name": "NYSE (EUA)", "code": "NYSE", "country": "EUA", "etf_tickers": ["SPY", "IVV", "VOO", "DIA", "IWM", "QQQ", "VGT", "XLK", "VTI", "ARKK"]},
+    {"name": "NASDAQ (EUA)", "code": "NASDAQ", "country": "EUA", "etf_tickers": ["QQQ", "SMH", "SOXX", "ARKK", "XSD", "VGT", "FDN", "KWEB", "IGV", "CIBR"]},
+    {"name": "B3 - Bovespa (Brasil)", "code": "B3_BOV", "country": "Brasil", "etf_tickers": ["BOVA11.SA", "IVVB11.SA", "SMAL11.SA", "BBSD11.SA", "HASH11.SA", "GOVE11.SA", "FIXA11.SA", "XINA11.SA", "ALUG11.SA", "EURO11.SA"]},
+    {"name": "B3 - BMF (Brasil)", "code": "B3_BMF", "country": "Brasil", "etf_tickers": ["BOVV11.SA", "SMAL11.SA", "PIBB11.SA", "GOLD11.SA", "CRPT11.SA", "IVVB11.SA", "DIVO11.SA", "FIND11.SA", "BRAX11.SA", "IBOV11.SA"]},
+    {"name": "London Stock Exchange (Reino Unido)", "code": "LSE", "country": "Reino Unido", "etf_tickers": ["VUKE.L", "ISF.L", "IUKD.L", "IWDP.L", "EMIM.L", "IGLT.L", "VGOV.L", "VEUR.L", "VWRL.L", "VMID.L"]},
+    {"name": "Tokyo Stock Exchange (Japão)", "code": "TSE", "country": "Japão", "etf_tickers": ["EWJ", "DXJ", "FLJP", "JPNL", "BBJP", "FJP", "SCJ", "ENZL", "JPXN", "1321.T"]},
+    {"name": "Shanghai Stock Exchange (China)", "code": "SSE", "country": "China", "etf_tickers": ["FXI", "MCHI", "KWEB", "ASHR", "CHIQ", "GXC", "CNXT", "CAF", "CHIM", "FLCH"]},
+    {"name": "Euronext (Europa)", "code": "Euronext", "country": "Europa", "etf_tickers": ["EZU", "VGK", "HEDJ", "IEUR", "FEZ", "EFA", "QDEU", "FLGR", "FGM", "IEAC.AS"]},
+    {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "FLHK", "GCH", "HSBC", "BMO.TO", "3033.HK", "2828.HK", "2800.HK", "2823.HK"]},
+    {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "DAX.DE"]},
+    {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
+    {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
+]
+
+def fetch_etf_data(ticker):
+    try:
+        ticker_obj = yf.Ticker(ticker)
+        info = ticker_obj.info
+
+        price = info.get("regularMarketPrice")
+        previous_close = info.get("previousClose")
+
+        change_percent = None
+        if price is not None and previous_close is not None and previous_close != 0:
+            change_percent = ((price - previous_close) / previous_close) * 100
+
+        currency = info.get("currency", "N/A")
+
+        last_update_timestamp = info.get("regularMarketTime")
+        last_updated_date = None
+        if last_update_timestamp:
+            last_updated_date = datetime.fromtimestamp(last_update_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+        # --- Calculate Monthly Change ---
+        monthly_change_percent = None
+        hist = ticker_obj.history(period="1mo") # Get 1 month of historical data
+        if not hist.empty and len(hist) > 1:
+            first_close_price = hist["Close"].iloc[0]
+            last_close_price = hist["Close"].iloc[-1]
+            if first_close_price != 0:
+                monthly_change_percent = ((last_close_price - first_close_price) / first_close_price) * 100
+
+        return {
+            "ticker": ticker,
+            "name": info.get("longName", ticker),
+            "price": round(price, 2) if price is not None else None,
+            "currency": currency,
+            "change_percent": round(change_percent, 2) if change_percent is not None else None,
+            "monthly_change_percent": round(monthly_change_percent, 2) if monthly_change_percent is not None else None,
+            "last_updated": last_updated_date
+        }
+    except Exception as e:
+        print(f"Error fetching data for {ticker}: {e}")
+        return {
+            "ticker": ticker,
+            "name": ticker,
+            "price": None,
+            "currency": None,
+            "change_percent": None,
+            "monthly_change_percent": None,
+            "last_updated": None
+        }
+
+def scrape_all_data():
+    all_exchanges_data = []
+    for exchange in EXCHANGES_DATA:
+        print(f"Fetching data for {exchange["name"]}...")
+        etfs_data = []
+        for ticker in exchange["etf_tickers"]:
+            etf_info = fetch_etf_data(ticker)
+            etfs_data.append(etf_info)
+            time.sleep(1)
+
+        exchange_data = {
+            "name": exchange["name"],
+            "code": exchange["code"],
+            "country": exchange["country"],
+            "etfs": etfs_data
+        }
+        all_exchanges_data.append(exchange_data)
+    return all_exchanges_data
+
+data = scrape_all_data()
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, ensure_ascii=False, indent=4)
+print("Data scraping complete and saved to data.json")'
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add data.json
+        git diff-index --quiet HEAD || git commit -m "Atualiza dados de ETFs - $(date +'%Y-%m-%d %H:%M:%S')"
+        git push
