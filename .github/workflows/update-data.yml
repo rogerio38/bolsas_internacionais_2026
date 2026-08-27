@@ -31,6 +31,7 @@ jobs:
 
       - name: Run data scraping script
         run: |
+          python <<EOF
           import yfinance as yf
           import json
           from datetime import datetime
@@ -46,7 +47,7 @@ jobs:
               {"name": "Shanghai Stock Exchange (China)", "code": "SSE", "country": "China", "etf_tickers": ["FXI", "MCHI", "KWEB", "ASHR", "CHIQ", "GXC", "CNXT", "CAF", "CHIM", "FLCH"]},
               {"name": "Euronext (Europa)", "code": "Euronext", "country": "Europa", "etf_tickers": ["EZU", "VGK", "HEDJ", "IEUR", "FEZ", "EFA", "QDEU", "FLGR", "FGM", "IEAC.AS"]},
               {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "FLHK", "GCH", "HSBC", "BMO.TO", "3033.HK", "2828.HK", "2800.HK", "2823.HK"]},
-              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "DAX.DE"]},
+              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "CHSP.DE"]},
               {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
               {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
           ]
@@ -122,6 +123,7 @@ jobs:
           with open("data.json", "w", encoding="utf-8") as f:
               json.dump(data, f, ensure_ascii=False, indent=4)
           print("Data scraping complete and saved to data.json")
+          EOF
 
       - name: Commit and push changes
         run: |
