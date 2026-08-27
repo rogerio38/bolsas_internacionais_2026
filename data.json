@@ -398,7 +398,7 @@
                 "price": 47.08,
                 "currency": "GBP",
                 "change_percent": -0.75,
-                "monthly_change_percent": 0.76,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:27"
             },
             {
@@ -407,7 +407,7 @@
                 "price": 1058.4,
                 "currency": "GBp",
                 "change_percent": -0.75,
-                "monthly_change_percent": 0.78,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:44"
             },
             {
@@ -416,7 +416,7 @@
                 "price": 1032.8,
                 "currency": "GBp",
                 "change_percent": -0.96,
-                "monthly_change_percent": -0.19,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:05"
             },
             {
@@ -425,7 +425,7 @@
                 "price": 1905.0,
                 "currency": "GBp",
                 "change_percent": -0.87,
-                "monthly_change_percent": -5.71,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:03"
             },
             {
@@ -434,7 +434,7 @@
                 "price": 4080.0,
                 "currency": "GBp",
                 "change_percent": 0.52,
-                "monthly_change_percent": 5.13,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:21"
             },
             {
@@ -443,7 +443,7 @@
                 "price": 9.62,
                 "currency": "GBP",
                 "change_percent": 0.08,
-                "monthly_change_percent": 0.08,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:01"
             },
             {
@@ -452,7 +452,7 @@
                 "price": 15.42,
                 "currency": "GBP",
                 "change_percent": 0.03,
-                "monthly_change_percent": 0.09,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:25"
             },
             {
@@ -461,7 +461,7 @@
                 "price": 43.3,
                 "currency": "GBP",
                 "change_percent": -0.72,
-                "monthly_change_percent": 1.52,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:03"
             },
             {
@@ -470,7 +470,7 @@
                 "price": 138.83,
                 "currency": "GBP",
                 "change_percent": 0.39,
-                "monthly_change_percent": 2.54,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:19"
             },
             {
@@ -479,7 +479,7 @@
                 "price": 38.22,
                 "currency": "GBP",
                 "change_percent": 0.14,
-                "monthly_change_percent": 4.88,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:12"
             }
         ]
@@ -576,7 +576,7 @@
                 "price": 68410.0,
                 "currency": "JPY",
                 "change_percent": -0.23,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 1.68,
                 "last_updated": "2026-08-27 06:30:00"
             }
         ]
@@ -770,7 +770,7 @@
                 "price": 117.53,
                 "currency": "EUR",
                 "change_percent": -0.13,
-                "monthly_change_percent": -0.06,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:09:43"
             }
         ]
@@ -814,7 +814,7 @@
                 "currency": "N/A",
                 "change_percent": null,
                 "monthly_change_percent": null,
-                "last_updated": "2019-06-28 22:07:38"
+                "last_updated": null
             },
             {
                 "ticker": "HSBC",
@@ -836,7 +836,7 @@
             },
             {
                 "ticker": "3033.HK",
-                "name": "CSOP Hang Seng TECH Index ETF",
+                "name": "CSOP ETF Series - CSOP Hang Seng TECH Index ETF",
                 "price": 4.54,
                 "currency": "HKD",
                 "change_percent": 0.09,
@@ -910,7 +910,7 @@
                 "price": 4.9,
                 "currency": "EUR",
                 "change_percent": -0.08,
-                "monthly_change_percent": 0.06,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:50"
             },
             {
@@ -928,7 +928,7 @@
                 "price": 65.21,
                 "currency": "EUR",
                 "change_percent": -0.64,
-                "monthly_change_percent": 1.59,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:35:56"
             },
             {
@@ -937,7 +937,7 @@
                 "price": 217.25,
                 "currency": "EUR",
                 "change_percent": 0.25,
-                "monthly_change_percent": 3.87,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:36:12"
             },
             {
@@ -946,7 +946,7 @@
                 "price": 126.91,
                 "currency": "EUR",
                 "change_percent": 0.01,
-                "monthly_change_percent": 10.2,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:36:01"
             },
             {
@@ -964,7 +964,7 @@
                 "price": 8.59,
                 "currency": "EUR",
                 "change_percent": -0.02,
-                "monthly_change_percent": -0.09,
+                "monthly_change_percent": NaN,
                 "last_updated": "2026-08-27 15:36:08"
             }
         ]
@@ -1086,7 +1086,7 @@
                 "price": 151.12,
                 "currency": "AUD",
                 "change_percent": -1.01,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 1.79,
                 "last_updated": "2026-08-27 06:10:12"
             },
             {
@@ -1095,7 +1095,7 @@
                 "price": 112.48,
                 "currency": "AUD",
                 "change_percent": -0.91,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 2.17,
                 "last_updated": "2026-08-27 06:12:19"
             },
             {
@@ -1104,7 +1104,7 @@
                 "price": 160.07,
                 "currency": "AUD",
                 "change_percent": 0.21,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 0.61,
                 "last_updated": "2026-08-27 06:10:12"
             },
             {
@@ -1113,7 +1113,7 @@
                 "price": 36.35,
                 "currency": "AUD",
                 "change_percent": -0.95,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 2.08,
                 "last_updated": "2026-08-27 06:10:12"
             },
             {
@@ -1122,7 +1122,7 @@
                 "price": 80.95,
                 "currency": "AUD",
                 "change_percent": -1.05,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 1.9,
                 "last_updated": "2026-08-27 05:55:52"
             },
             {
@@ -1131,7 +1131,7 @@
                 "price": 110.15,
                 "currency": "AUD",
                 "change_percent": 0.69,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 1.97,
                 "last_updated": "2026-08-27 05:59:00"
             },
             {
@@ -1149,7 +1149,7 @@
                 "price": 45.22,
                 "currency": "AUD",
                 "change_percent": -2.18,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 6.03,
                 "last_updated": "2026-08-27 06:10:13"
             },
             {
@@ -1158,7 +1158,7 @@
                 "price": 18.97,
                 "currency": "AUD",
                 "change_percent": -1.04,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 12.51,
                 "last_updated": "2026-08-27 05:57:10"
             }
         ]
