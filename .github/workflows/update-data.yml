@@ -47,10 +47,10 @@ jobs:
               {"name": "Shanghai Stock Exchange (China)", "code": "SSE", "country": "China", "etf_tickers": ["FXI", "MCHI", "KWEB", "ASHR", "CHIQ", "GXC", "CNXT", "CAF", "CHIM", "FLCH"]},
               {"name": "Euronext (Europa)", "code": "Euronext", "country": "Europa", "etf_tickers": ["EZU", "VGK", "HEDJ", "IEUR", "FEZ", "EFA", "QDEU", "FLGR", "FGM", "IEAC.AS"]},
               {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "FLHK", "GCH", "HSBC", "BMO.TO", "3033.HK", "2828.HK", "2800.HK", "2823.HK"]},
-              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "CHSP.DE"]},
+              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "DAX.DE"]},
               {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
               {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
-          ]
+           ]
 
           def fetch_etf_data(ticker):
               try:
@@ -71,8 +71,9 @@ jobs:
                   if last_update_timestamp:
                       last_updated_date = datetime.fromtimestamp(last_update_timestamp).strftime("%Y-%m-%d %H:%M:%S")
 
+                  # --- Calculate Monthly Change ---
                   monthly_change_percent = None
-                  hist = ticker_obj.history(period="1mo")
+                  hist = ticker_obj.history(period="1mo") # Get 1 month of historical data
                   if not hist.empty and len(hist) > 1:
                       first_close_price = hist['Close'].iloc[0]
                       last_close_price = hist['Close'].iloc[-1]
@@ -108,7 +109,7 @@ jobs:
                   for ticker in exchange["etf_tickers"]:
                       etf_info = fetch_etf_data(ticker)
                       etfs_data.append(etf_info)
-                      time.sleep(1) # Be polite to the API
+                      time.sleep(1)
 
                   exchange_data = {
                       "name": exchange["name"],
