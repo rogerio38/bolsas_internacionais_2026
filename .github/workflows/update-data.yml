@@ -47,10 +47,11 @@ jobs:
               {"name": "Shanghai Stock Exchange (China)", "code": "SSE", "country": "China", "etf_tickers": ["FXI", "MCHI", "KWEB", "ASHR", "CHIQ", "GXC", "CNXT", "CAF", "CQQQ", "FLCH"]},
               {"name": "Euronext (Europa)", "code": "Euronext", "country": "Europa", "etf_tickers": ["EZU", "VGK", "HEDJ", "IEUR", "FEZ", "EFA", "QDEU", "FLGR", "FGM", "IEAC.AS"]},
               {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "2833.HK", "2840.HK", "3033.HK", "2828.HK", "2800.HK", "2823.HK", "3188.HK", "9067.HK"]},
-              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "DAX.DE"]},
+              {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DXGE", "DAX.DE", "EXS1.DE", "EXSA.DE", "4GLD.DE", "DBXA.DE", "EUN", "FLXG", "XADJ"]},
               {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
               {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
-           ]
+          ]
+
 
           def fetch_etf_data(ticker):
               try:
