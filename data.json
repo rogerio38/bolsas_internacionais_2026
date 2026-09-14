@@ -398,7 +398,7 @@
                 "price": 46.73,
                 "currency": "GBP",
                 "change_percent": 0.43,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -0.63,
                 "last_updated": "2026-09-14 15:35:00"
             },
             {
@@ -407,7 +407,7 @@
                 "price": 1048.6,
                 "currency": "GBp",
                 "change_percent": 0.4,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -0.65,
                 "last_updated": "2026-09-14 16:13:00"
             },
             {
@@ -416,7 +416,7 @@
                 "price": 1024.6,
                 "currency": "GBp",
                 "change_percent": 0.35,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -1.92,
                 "last_updated": "2026-09-14 15:35:19"
             },
             {
@@ -425,7 +425,7 @@
                 "price": 1843.0,
                 "currency": "GBp",
                 "change_percent": 0.08,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -5.26,
                 "last_updated": "2026-09-14 15:35:06"
             },
             {
@@ -434,7 +434,7 @@
                 "price": 4024.0,
                 "currency": "GBp",
                 "change_percent": -2.4,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": 2.23,
                 "last_updated": "2026-09-14 16:06:50"
             },
             {
@@ -443,7 +443,7 @@
                 "price": 9.48,
                 "currency": "GBP",
                 "change_percent": -0.16,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -1.07,
                 "last_updated": "2026-09-14 15:35:25"
             },
             {
@@ -452,7 +452,7 @@
                 "price": 15.17,
                 "currency": "GBP",
                 "change_percent": -0.2,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -1.23,
                 "last_updated": "2026-09-14 15:35:17"
             },
             {
@@ -461,7 +461,7 @@
                 "price": 42.24,
                 "currency": "GBP",
                 "change_percent": -0.67,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -2.38,
                 "last_updated": "2026-09-14 15:35:21"
             },
             {
@@ -470,7 +470,7 @@
                 "price": 137.94,
                 "currency": "GBP",
                 "change_percent": -0.59,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -0.79,
                 "last_updated": "2026-09-14 15:35:19"
             },
             {
@@ -479,7 +479,7 @@
                 "price": 36.59,
                 "currency": "GBP",
                 "change_percent": -0.64,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -3.44,
                 "last_updated": "2026-09-14 15:35:04"
             }
         ]
@@ -517,13 +517,13 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "JPXL",
-                "name": "JPXL",
-                "price": null,
-                "currency": "N/A",
-                "change_percent": null,
-                "monthly_change_percent": null,
-                "last_updated": null
+                "ticker": "JPXN",
+                "name": "iShares JPX-Nikkei 400 ETF",
+                "price": 104.34,
+                "currency": "USD",
+                "change_percent": -0.44,
+                "monthly_change_percent": -0.39,
+                "last_updated": "2026-09-14 19:04:34"
             },
             {
                 "ticker": "BBJP",
@@ -562,13 +562,13 @@
                 "last_updated": "2026-09-14 20:00:01"
             },
             {
-                "ticker": "JPXN",
-                "name": "iShares JPX-Nikkei 400 ETF",
-                "price": 104.34,
-                "currency": "USD",
-                "change_percent": -0.44,
-                "monthly_change_percent": -0.39,
-                "last_updated": "2026-09-14 19:04:34"
+                "ticker": "5103.T",
+                "name": "Showa Holdings Co Ltd",
+                "price": null,
+                "currency": "JPY",
+                "change_percent": null,
+                "monthly_change_percent": -80.0,
+                "last_updated": null
             },
             {
                 "ticker": "1321.T",
@@ -817,24 +817,6 @@
                 "last_updated": "2026-09-14 08:08:02"
             },
             {
-                "ticker": "HSBC",
-                "name": "HSBC Holdings plc",
-                "price": 103.94,
-                "currency": "USD",
-                "change_percent": -1.29,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 20:00:02"
-            },
-            {
-                "ticker": "BMO.TO",
-                "name": "Bank of Montreal",
-                "price": 242.41,
-                "currency": "CAD",
-                "change_percent": -0.02,
-                "monthly_change_percent": -6.0,
-                "last_updated": "2026-09-14 20:00:00"
-            },
-            {
                 "ticker": "3033.HK",
                 "name": "CSOP ETF Series - CSOP Hang Seng TECH Index ETF",
                 "price": 4.24,
@@ -867,6 +849,24 @@
                 "price": 16.5,
                 "currency": "HKD",
                 "change_percent": -0.6,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 08:08:02"
+            },
+            {
+                "ticker": "3188.HK",
+                "name": "ChinaAMC ETF Series - ChinaAMC CSI 300 Index ETF",
+                "price": 54.58,
+                "currency": "HKD",
+                "change_percent": -0.11,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 08:08:02"
+            },
+            {
+                "ticker": "9067.HK",
+                "name": "iShares Hang Seng TECH ETF",
+                "price": 1.16,
+                "currency": "USD",
+                "change_percent": -0.17,
                 "monthly_change_percent": NaN,
                 "last_updated": "2026-09-14 08:08:02"
             }
