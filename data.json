@@ -517,10 +517,10 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "JPNL",
-                "name": "Direxion Daily Japan Bull 3X Shares",
+                "ticker": "JPXL",
+                "name": "JPXL",
                 "price": null,
-                "currency": "USD",
+                "currency": "N/A",
                 "change_percent": null,
                 "monthly_change_percent": null,
                 "last_updated": null
@@ -659,13 +659,13 @@
                 "last_updated": "2026-09-14 19:55:33"
             },
             {
-                "ticker": "CHIM",
-                "name": "Global X MSCI China Materials ETF",
-                "price": 13.29,
+                "ticker": "CQQQ",
+                "name": "Invesco China Technology ETF",
+                "price": 46.16,
                 "currency": "USD",
-                "change_percent": 0.0,
-                "monthly_change_percent": null,
-                "last_updated": "2025-06-11 13:54:40"
+                "change_percent": -0.37,
+                "monthly_change_percent": -10.87,
+                "last_updated": "2026-09-14 20:00:00"
             },
             {
                 "ticker": "FLCH",
