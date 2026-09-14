@@ -43,10 +43,10 @@ jobs:
               {"name": "B3 - Bovespa (Brasil)", "code": "B3_BOV", "country": "Brasil", "etf_tickers": ["BOVA11.SA", "IVVB11.SA", "SMAL11.SA", "BBSD11.SA", "HASH11.SA", "GOVE11.SA", "FIXA11.SA", "XINA11.SA", "ALUG11.SA", "EURO11.SA"]},
               {"name": "B3 - BMF (Brasil)", "code": "B3_BMF", "country": "Brasil", "etf_tickers": ["BOVV11.SA", "SMAL11.SA", "PIBB11.SA", "GOLD11.SA", "CRPT11.SA", "IVVB11.SA", "DIVO11.SA", "FIND11.SA", "BRAX11.SA", "IBOV11.SA"]},
               {"name": "London Stock Exchange (Reino Unido)", "code": "LSE", "country": "Reino Unido", "etf_tickers": ["VUKE.L", "ISF.L", "IUKD.L", "IWDP.L", "EMIM.L", "IGLT.L", "VGOV.L", "VEUR.L", "VWRL.L", "VMID.L"]},
-              {"name": "Tokyo Stock Exchange (Japão)", "code": "TSE", "country": "Japão", "etf_tickers": ["EWJ", "JPIN", "FLJP", "JPXL", "BBJP", "FJP", "SCJ", "ENZL", "JPXN", "1321.T"]},
+              {"name": "Tokyo Stock Exchange (Japão)", "code": "TSE", "country": "Japão", "etf_tickers": ["EWJ", "JPIN", "FLJP", "JPXN", "BBJP", "FJP", "SCJ", "ENZL", "5103.T", "1321.T"]},
               {"name": "Shanghai Stock Exchange (China)", "code": "SSE", "country": "China", "etf_tickers": ["FXI", "MCHI", "KWEB", "ASHR", "CHIQ", "GXC", "CNXT", "CAF", "CQQQ", "FLCH"]},
               {"name": "Euronext (Europa)", "code": "Euronext", "country": "Europa", "etf_tickers": ["EZU", "VGK", "HEDJ", "IEUR", "FEZ", "EFA", "QDEU", "FLGR", "FGM", "IEAC.AS"]},
-              {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "2833.HK", "2840.HK", "HSBC", "BMO.TO", "3033.HK", "2828.HK", "2800.HK", "2823.HK"]},
+              {"name": "Hong Kong Stock Exchange (Hong Kong)", "code": "HKEX", "country": "Hong Kong", "etf_tickers": ["EWH", "KBA", "2833.HK", "2840.HK", "3033.HK", "2828.HK", "2800.HK", "2823.HK", "3188.HK", "9067.HK"]},
               {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "DAX", "FLGR", "EUNA.DE", "GXG.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "DBXA.DE", "DAX.DE"]},
               {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
               {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
