@@ -499,15 +499,6 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "JPIN",
-                "name": "JPMorgan Diversified Return International Equity ETF",
-                "price": 76.51,
-                "currency": "USD",
-                "change_percent": -0.54,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 19:49:24"
-            },
-            {
                 "ticker": "FLJP",
                 "name": "Franklin FTSE Japan ETF",
                 "price": 41.55,
@@ -517,29 +508,11 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "JPXN",
-                "name": "iShares JPX-Nikkei 400 ETF",
-                "price": 104.34,
-                "currency": "USD",
-                "change_percent": -0.44,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 19:04:34"
-            },
-            {
                 "ticker": "BBJP",
                 "name": "JPMorgan BetaBuilders Japan ETF",
                 "price": 78.82,
                 "currency": "USD",
                 "change_percent": -0.92,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 20:00:00"
-            },
-            {
-                "ticker": "FJP",
-                "name": "First Trust Japan AlphaDEX Fund",
-                "price": 78.01,
-                "currency": "USD",
-                "change_percent": -1.11,
                 "monthly_change_percent": NaN,
                 "last_updated": "2026-09-14 20:00:00"
             },
@@ -553,13 +526,49 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "ENZL",
-                "name": "iShares MSCI New Zealand ETF",
-                "price": 45.4,
+                "ticker": "FJP",
+                "name": "First Trust Japan AlphaDEX Fund",
+                "price": 78.01,
                 "currency": "USD",
-                "change_percent": -0.88,
+                "change_percent": -1.11,
                 "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 20:00:01"
+                "last_updated": "2026-09-14 20:00:00"
+            },
+            {
+                "ticker": "1321.T",
+                "name": "NEXT FUNDS Nikkei 225 Exchange Traded Fund",
+                "price": 66110.0,
+                "currency": "JPY",
+                "change_percent": 0.38,
+                "monthly_change_percent": -7.69,
+                "last_updated": "2026-09-15 01:21:00"
+            },
+            {
+                "ticker": "2558.T",
+                "name": "MAXIS S&P500 US Equity ETF",
+                "price": 3393.0,
+                "currency": "JPY",
+                "change_percent": 0.41,
+                "monthly_change_percent": -4.82,
+                "last_updated": "2026-09-15 01:20:54"
+            },
+            {
+                "ticker": "1570.T",
+                "name": "NEXT FUNDS Nikkei 225 Leveraged Index Exchange Traded Fund",
+                "price": 64350.0,
+                "currency": "JPY",
+                "change_percent": 0.67,
+                "monthly_change_percent": -15.25,
+                "last_updated": "2026-09-15 01:21:02"
+            },
+            {
+                "ticker": "2621.T",
+                "name": "iShares 20+ Year US Treasury Bond JPY Hedged ETF",
+                "price": 982.0,
+                "currency": "JPY",
+                "change_percent": 0.1,
+                "monthly_change_percent": -1.41,
+                "last_updated": "2026-09-15 01:19:44"
             },
             {
                 "ticker": "5103.T",
@@ -569,15 +578,6 @@
                 "change_percent": null,
                 "monthly_change_percent": -75.0,
                 "last_updated": null
-            },
-            {
-                "ticker": "1321.T",
-                "name": "NEXT FUNDS Nikkei 225 Exchange Traded Fund",
-                "price": 65860.0,
-                "currency": "JPY",
-                "change_percent": -0.59,
-                "monthly_change_percent": -8.04,
-                "last_updated": "2026-09-15 00:04:32"
             }
         ]
     },
@@ -659,15 +659,6 @@
                 "last_updated": "2026-09-14 19:55:33"
             },
             {
-                "ticker": "CQQQ",
-                "name": "Invesco China Technology ETF",
-                "price": 46.16,
-                "currency": "USD",
-                "change_percent": -0.37,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 20:00:00"
-            },
-            {
                 "ticker": "FLCH",
                 "name": "Franklin FTSE China ETF",
                 "price": 21.12,
@@ -675,6 +666,15 @@
                 "change_percent": 0.72,
                 "monthly_change_percent": NaN,
                 "last_updated": "2026-09-14 19:59:52"
+            },
+            {
+                "ticker": "PGJ",
+                "name": "Invesco Golden Dragon China ETF",
+                "price": 22.58,
+                "currency": "USD",
+                "change_percent": 0.34,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 20:00:00"
             }
         ]
     },
@@ -756,15 +756,6 @@
                 "last_updated": "2026-09-14 15:05:45"
             },
             {
-                "ticker": "FGM",
-                "name": "First Trust Germany AlphaDEX Fund",
-                "price": 62.4,
-                "currency": "USD",
-                "change_percent": -1.54,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 20:00:00"
-            },
-            {
                 "ticker": "IEAC.AS",
                 "name": "iShares Core € Corp Bond UCITS ETF EUR (Dist)",
                 "price": 115.71,
@@ -772,6 +763,15 @@
                 "change_percent": -0.38,
                 "monthly_change_percent": NaN,
                 "last_updated": "2026-09-14 15:35:01"
+            },
+            {
+                "ticker": "CSPX.AS",
+                "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+                "price": 711.96,
+                "currency": "EUR",
+                "change_percent": -0.16,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:35:29"
             }
         ]
     },
@@ -799,31 +799,22 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "2833.HK",
-                "name": "Hang Seng Investment Index Funds Series II - Hang Seng Index Tracking Fund",
-                "price": 20.08,
+                "ticker": "2800.HK",
+                "name": "Tracker Fund Of Hong Kong",
+                "price": 25.6,
                 "currency": "HKD",
-                "change_percent": -0.69,
-                "monthly_change_percent": -0.75,
-                "last_updated": "2022-09-02 08:08:19"
-            },
-            {
-                "ticker": "2840.HK",
-                "name": "SPDR Gold Shares",
-                "price": 3108.0,
-                "currency": "HKD",
-                "change_percent": -0.73,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 08:08:02"
+                "change_percent": 0.16,
+                "monthly_change_percent": -2.08,
+                "last_updated": "2026-09-15 01:20:22"
             },
             {
                 "ticker": "3033.HK",
                 "name": "CSOP ETF Series - CSOP Hang Seng TECH Index ETF",
-                "price": 4.24,
+                "price": 4.26,
                 "currency": "HKD",
-                "change_percent": -0.05,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 08:08:02"
+                "change_percent": 0.61,
+                "monthly_change_percent": -9.83,
+                "last_updated": "2026-09-15 01:20:22"
             },
             {
                 "ticker": "2828.HK",
@@ -831,26 +822,26 @@
                 "price": 85.66,
                 "currency": "HKD",
                 "change_percent": 0.56,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 08:08:02"
-            },
-            {
-                "ticker": "2800.HK",
-                "name": "Tracker Fund Of Hong Kong",
-                "price": 25.56,
-                "currency": "HKD",
-                "change_percent": 0.55,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -1.98,
                 "last_updated": "2026-09-14 08:08:02"
             },
             {
                 "ticker": "2823.HK",
                 "name": "iShares Asia Trust - iShares FTSE A50 China Index ETF",
-                "price": 16.5,
+                "price": 16.48,
                 "currency": "HKD",
-                "change_percent": -0.6,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 08:08:02"
+                "change_percent": -0.12,
+                "monthly_change_percent": -3.54,
+                "last_updated": "2026-09-15 01:20:22"
+            },
+            {
+                "ticker": "3037.HK",
+                "name": "CSOP ETF Series III - CSOP Hang Seng Index ETF",
+                "price": 25.52,
+                "currency": "HKD",
+                "change_percent": 0.55,
+                "monthly_change_percent": -2.38,
+                "last_updated": "2026-09-14 07:34:15"
             },
             {
                 "ticker": "3188.HK",
@@ -858,17 +849,26 @@
                 "price": 54.58,
                 "currency": "HKD",
                 "change_percent": -0.11,
-                "monthly_change_percent": NaN,
+                "monthly_change_percent": -4.14,
                 "last_updated": "2026-09-14 08:08:02"
             },
             {
-                "ticker": "9067.HK",
-                "name": "iShares Hang Seng TECH ETF",
-                "price": 1.16,
-                "currency": "USD",
-                "change_percent": -0.17,
-                "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 08:08:02"
+                "ticker": "2801.HK",
+                "name": "iShares Asia Trust - iShares Core MSCI China Index ETF",
+                "price": 23.84,
+                "currency": "HKD",
+                "change_percent": 0.08,
+                "monthly_change_percent": -1.63,
+                "last_updated": "2026-09-15 01:20:22"
+            },
+            {
+                "ticker": "82828.HK",
+                "name": "Hang Seng China Enterprises Index ETF",
+                "price": 73.12,
+                "currency": "CNY",
+                "change_percent": 0.44,
+                "monthly_change_percent": -2.41,
+                "last_updated": "2026-09-14 05:53:16"
             }
         ]
     },
@@ -887,31 +887,31 @@
                 "last_updated": "2026-09-14 20:00:00"
             },
             {
-                "ticker": "DXGE",
-                "name": "WisdomTree Germany Hedged Equity Fund",
-                "price": 33.79,
+                "ticker": "FLGR",
+                "name": "Franklin FTSE Germany ETF",
+                "price": 33.3,
                 "currency": "USD",
-                "change_percent": -1.17,
-                "monthly_change_percent": null,
-                "last_updated": "2023-10-17 19:41:00"
-            },
-            {
-                "ticker": "DAX.DE",
-                "name": "Amundi DAX II UCITS ETF Acc",
-                "price": 16972.3,
-                "currency": "EUR",
-                "change_percent": 0.49,
-                "monthly_change_percent": -3.25,
-                "last_updated": "2024-01-30 20:00:00"
-            },
-            {
-                "ticker": "EXS1.DE",
-                "name": "iShares Core DAX UCITS ETF (DE) EUR (Acc)",
-                "price": 209.7,
-                "currency": "EUR",
-                "change_percent": -0.52,
+                "change_percent": -0.24,
                 "monthly_change_percent": NaN,
-                "last_updated": "2026-09-14 15:36:04"
+                "last_updated": "2026-09-14 15:05:45"
+            },
+            {
+                "ticker": "EUNA.DE",
+                "name": "iShares Core Global Aggregate Bond UCITS ETF EUR Hedged (Acc)",
+                "price": 4.84,
+                "currency": "EUR",
+                "change_percent": -0.1,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:35:54"
+            },
+            {
+                "ticker": "EUNL.DE",
+                "name": "iShares Core MSCI World UCITS ETF USD (Acc)",
+                "price": 126.39,
+                "currency": "EUR",
+                "change_percent": -0.19,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:35:47"
             },
             {
                 "ticker": "EXSA.DE",
@@ -923,6 +923,15 @@
                 "last_updated": "2026-09-14 15:35:55"
             },
             {
+                "ticker": "EXS1.DE",
+                "name": "iShares Core DAX UCITS ETF (DE) EUR (Acc)",
+                "price": 209.7,
+                "currency": "EUR",
+                "change_percent": -0.52,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:36:04"
+            },
+            {
                 "ticker": "4GLD.DE",
                 "name": "Xetra-Gold",
                 "price": 119.58,
@@ -932,40 +941,31 @@
                 "last_updated": "2026-09-14 15:36:07"
             },
             {
-                "ticker": "DBXA.DE",
-                "name": "Xtrackers MSCI Europe UCITS ETF",
-                "price": 73.0,
+                "ticker": "VGER.DE",
+                "name": "Vanguard Germany All Cap UCITS ETF EUR Distributing",
+                "price": 35.36,
+                "currency": "EUR",
+                "change_percent": -0.44,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:36:04"
+            },
+            {
+                "ticker": "QDVE.DE",
+                "name": "iShares S&P 500 Information Technology Sector UCITS ETF USD (Acc)",
+                "price": 44.14,
+                "currency": "EUR",
+                "change_percent": -1.35,
+                "monthly_change_percent": NaN,
+                "last_updated": "2026-09-14 15:36:04"
+            },
+            {
+                "ticker": "DXSM.DE",
+                "name": "Xtrackers Bloomberg Commodity ex-Agriculture & Livestock Swap UCITS ETF",
+                "price": 26.17,
                 "currency": "EUR",
                 "change_percent": 0.0,
                 "monthly_change_percent": null,
-                "last_updated": "2022-11-23 16:36:12"
-            },
-            {
-                "ticker": "EUN",
-                "name": "iShares STOXX Europe 50 ETF EUR Dist",
-                "price": null,
-                "currency": "N/A",
-                "change_percent": null,
-                "monthly_change_percent": null,
-                "last_updated": null
-            },
-            {
-                "ticker": "FLXG",
-                "name": "FLXG",
-                "price": null,
-                "currency": "N/A",
-                "change_percent": null,
-                "monthly_change_percent": null,
-                "last_updated": null
-            },
-            {
-                "ticker": "XADJ",
-                "name": "XADJ",
-                "price": null,
-                "currency": "N/A",
-                "change_percent": null,
-                "monthly_change_percent": null,
-                "last_updated": null
+                "last_updated": "2022-11-23 16:36:04"
             }
         ]
     },
@@ -1083,65 +1083,65 @@
             {
                 "ticker": "A200.AX",
                 "name": "BetaShares Australia 200 ETF",
-                "price": 147.3,
+                "price": 146.8,
                 "currency": "AUD",
-                "change_percent": -0.15,
-                "monthly_change_percent": -2.66,
-                "last_updated": "2026-09-15 00:00:35"
+                "change_percent": -0.49,
+                "monthly_change_percent": -2.99,
+                "last_updated": "2026-09-15 01:17:07"
             },
             {
                 "ticker": "VAS.AX",
                 "name": "Vanguard Australian Shares Index ETF",
-                "price": 109.3,
+                "price": 109.02,
                 "currency": "AUD",
-                "change_percent": -0.25,
-                "monthly_change_percent": -2.82,
-                "last_updated": "2026-09-15 00:00:45"
+                "change_percent": -0.5,
+                "monthly_change_percent": -3.07,
+                "last_updated": "2026-09-15 01:16:56"
             },
             {
                 "ticker": "VGS.AX",
                 "name": "Vanguard MSCI Index International Shares ETF",
-                "price": 159.0,
+                "price": 159.15,
                 "currency": "AUD",
-                "change_percent": 0.13,
-                "monthly_change_percent": -2.66,
-                "last_updated": "2026-09-15 00:00:42"
+                "change_percent": 0.22,
+                "monthly_change_percent": -2.55,
+                "last_updated": "2026-09-15 01:17:18"
             },
             {
                 "ticker": "IOZ.AX",
                 "name": "iShares Core S&P/ASX 200 ETF",
-                "price": 35.37,
+                "price": 35.27,
                 "currency": "AUD",
-                "change_percent": -0.17,
-                "monthly_change_percent": -2.72,
-                "last_updated": "2026-09-15 00:00:43"
+                "change_percent": -0.45,
+                "monthly_change_percent": -3.0,
+                "last_updated": "2026-09-15 01:16:37"
             },
             {
                 "ticker": "STW.AX",
                 "name": "SPDR ETFs Australia - State Street SPDR S&P/ASX 200 ETF",
-                "price": 78.9,
+                "price": 78.65,
                 "currency": "AUD",
-                "change_percent": -0.05,
-                "monthly_change_percent": -2.71,
-                "last_updated": "2026-09-15 00:00:06"
+                "change_percent": -0.37,
+                "monthly_change_percent": -2.99,
+                "last_updated": "2026-09-15 01:16:07"
             },
             {
                 "ticker": "VAE.AX",
                 "name": "Vanguard FTSE Asia ex Japan Shares Index ETF",
-                "price": 108.76,
+                "price": 109.18,
                 "currency": "AUD",
-                "change_percent": -1.27,
-                "monthly_change_percent": -1.25,
-                "last_updated": "2026-09-14 23:59:56"
+                "change_percent": 0.39,
+                "monthly_change_percent": -2.13,
+                "last_updated": "2026-09-15 01:15:42"
             },
             {
                 "ticker": "ASX.AX",
                 "name": "ASX Limited",
-                "price": 54.74,
+                "price": 53.95,
                 "currency": "AUD",
-                "change_percent": 0.35,
-                "monthly_change_percent": -3.22,
-                "last_updated": "2026-09-15 00:00:52"
+                "change_percent": -1.1,
+                "monthly_change_percent": -4.62,
+                "last_updated": "2026-09-15 01:17:22"
             },
             {
                 "ticker": "MVE.AX",
@@ -1149,17 +1149,17 @@
                 "price": 43.61,
                 "currency": "AUD",
                 "change_percent": 0.0,
-                "monthly_change_percent": -3.94,
-                "last_updated": "2026-09-14 05:58:14"
+                "monthly_change_percent": -3.92,
+                "last_updated": "2026-09-15 01:14:19"
             },
             {
                 "ticker": "OZR.AX",
                 "name": "SPDR ETFs Australia - State Street SPDR S&P/ASX 200 Resources ETF",
-                "price": 17.72,
+                "price": 17.65,
                 "currency": "AUD",
-                "change_percent": -1.23,
-                "monthly_change_percent": -1.94,
-                "last_updated": "2026-09-15 00:00:55"
+                "change_percent": -1.62,
+                "monthly_change_percent": -2.22,
+                "last_updated": "2026-09-15 01:16:58"
             }
         ]
     }
