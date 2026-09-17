@@ -181,8 +181,8 @@ jobs:
                       "etfs": etfs_data
                   }
                   all_exchanges_data.append(exchange_data)
-                return all_exchanges_data
-           if __name__ == "__main__":
+               return all_exchanges_data
+          if __name__ == "__main__":
               # Limpar o arquivo de log antes de cada execução completa
               with open('yfinance_errors.log', 'w') as f:
                   f.write('')
