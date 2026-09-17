@@ -140,7 +140,7 @@ jobs:
                               logging.warning(f"[{ticker}] monthly_change_percent is None: Reason unknown after initial checks. Raw value: {monthly_change_percent}")
 
                        # If we successfully fetched data, break the retry loop
-                       break
+                      break
 
                   except Exception as e:
                       error_message = f"Error fetching data for {ticker} (attempt {attempt + 1}): {e}"
