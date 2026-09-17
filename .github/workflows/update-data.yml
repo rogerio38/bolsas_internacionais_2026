@@ -30,13 +30,22 @@ jobs:
           pip install yfinance pandas
 
       - name: Run data scraping script
-        run: |
+        run : |
           python <<EOF
           import yfinance as yf
           import json
           from datetime import datetime
           import time
+          import math # Importar o módulo math para lidar com NaN
+          import logging # Importar o módulo logging para registrar erros
 
+          # Configurar logging para um arquivo
+          logging.basicConfig(filename='yfinance_errors.log', level=logging.WARNING,
+                              format='%(asctime)s - %(levelname)s - %(message)s')
+
+          # Define the exchanges and a selection of representative ETFs for each
+          # Note: For non-US exchanges, US-listed ETFs tracking those markets are used for simplicity with yfinance.
+          # For B3, actual Brazilian ETFs are used where possible.
           EXCHANGES_DATA = [
               {"name": "NYSE (EUA)", "code": "NYSE", "country": "EUA", "etf_tickers": ["SPY", "IVV", "VOO", "DIA", "IWM", "QQQ", "VGT", "XLK", "VTI", "ARKK"]},
               {"name": "NASDAQ (EUA)", "code": "NASDAQ", "country": "EUA", "etf_tickers": ["QQQ", "XLK", "VUG", "IGV", "XLC", "SMH", "SOXX", "FDN", "CIBR", "ARKK"]},
@@ -50,80 +59,142 @@ jobs:
               {"name": "Frankfurt Stock Exchange / DAX (Alemanha)", "code": "DAX", "country": "Alemanha", "etf_tickers": ["EWG", "FLGR", "EUNA.DE", "EUNL.DE", "EXSA.DE", "EXS1.DE", "4GLD.DE", "VGER.DE", "QDVE.DE"]},
               {"name": "Toronto Stock Exchange (Canadá)", "code": "TSX", "country": "Canadá", "etf_tickers": ["EWC", "XIC.TO", "XIU.TO", "ZSP.TO", "HXT.TO", "VDY.TO", "VCN.TO", "ZWB.TO", "XEQT.TO", "VEQT.TO"]},
               {"name": "Australian Securities Exchange (Austrália)", "code": "ASX", "country": "Austrália", "etf_tickers": ["EWA", "A200.AX", "VAS.AX", "VGS.AX", "IOZ.AX", "STW.AX", "VAE.AX", "ASX.AX", "MVE.AX", "OZR.AX"]}
-          ]          
-          
-          def fetch_etf_data(ticker):
-              try:
-                  ticker_obj = yf.Ticker(ticker)
-                  info = ticker_obj.info
+          ]
 
-                  price = info.get("regularMarketPrice")
-                  previous_close = info.get("previousClose")
+          print("--- EXCHANGES_DATA sendo utilizado ---")
+          print(json.dumps(EXCHANGES_DATA, indent=4))
+          print("-------------------------------------")
 
-                  change_percent = None
-                  if price is not None and previous_close is not None and previous_close != 0:
-                      change_percent = ((price - previous_close) / previous_close) * 100
+          def fetch_etf_data(ticker, max_retries=3, initial_delay=1):
+              """Fetches ETF data using yfinance with retry mechanism."""
+              price = None
+              previous_close = None
+              change_percent = None
+              monthly_change_percent = None
+              currency = 'N/A'
+              last_updated_date = None
+              info = {}
 
-                  currency = info.get("currency", "N/A")
+              for attempt in range(max_retries):
+                  try:
+                      ticker_obj = yf.Ticker(ticker)
+                      info = ticker_obj.info
 
-                  last_update_timestamp = info.get("regularMarketTime")
-                  last_updated_date = None
-                  if last_update_timestamp:
-                      last_updated_date = datetime.fromtimestamp(last_update_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+                      # Explicitly check if info is valid before proceeding
+                      if not isinstance(info, dict) or not info:
+                          if attempt < max_retries - 1:
+                              logging.warning(f"[{ticker}] Tentativa {attempt + 1}: Sem informação válida. Retrying in {initial_delay * (2 ** attempt)}s.")
+                              time.sleep(initial_delay * (2 ** attempt))
+                              continue
+                          else:
+                              raise ValueError(f"No valid information dictionary found for ticker {ticker} after {max_retries} attempts. Skipping.")
 
-                  # --- Calculate Monthly Change ---
-                  monthly_change_percent = None
-                  hist = ticker_obj.history(period="1mo") # Get 1 month of historical data
-                  if not hist.empty and len(hist) > 1:
-                      first_close_price = hist['Close'].iloc[0]
-                      last_close_price = hist['Close'].iloc[-1]
-                      if first_close_price != 0:
-                          monthly_change_percent = ((last_close_price - first_close_price) / first_close_price) * 100
+                      price = info.get('regularMarketPrice')
+                      previous_close = info.get('previousClose')
 
-                  return {
-                      "ticker": ticker,
-                      "name": info.get("longName", ticker),
-                      "price": round(price, 2) if price is not None else None,
-                      "currency": currency,
-                      "change_percent": round(change_percent, 2) if change_percent is not None else None,
-                      "monthly_change_percent": round(monthly_change_percent, 2) if monthly_change_percent is not None else None,
-                      "last_updated": last_updated_date
-                  }
-              except Exception as e:
-                  print(f"Error fetching data for {ticker}: {e}")
-                  return {
-                      "ticker": ticker,
-                      "name": ticker,
-                      "price": None,
-                      "currency": None,
-                      "change_percent": None,
-                      "monthly_change_percent": None,
-                      "last_updated": None
-                  }
+                      if price is not None and previous_close is not None and previous_close != 0:
+                          change_percent = ((price - previous_close) / previous_close) * 100
+
+                      currency = info.get('currency', 'N/A')
+
+                      # yfinance often gives the last update timestamp. Convert to readable format.
+                      last_update_timestamp = info.get('regularMarketTime')
+                      if last_update_timestamp:
+                          last_updated_date = datetime.fromtimestamp(last_update_timestamp).strftime('%Y-%m-%d %H:%M:%S')
+
+                      # --- Calculate Monthly Change ---
+                      hist = ticker_obj.history(period="1mo") # Get 1 month of historical data
+
+                      if not hist.empty:
+                          # Get all non-NaN close prices
+                          valid_close_prices = hist['Close'].dropna()
+
+                          if len(valid_close_prices) > 1:
+                              first_close_price = valid_close_prices.iloc[0]
+                              last_close_price = valid_close_prices.iloc[-1]
+
+                              if first_close_price is not None and first_close_price != 0: # Check for division by zero
+                                  monthly_change_percent = ((last_close_price - first_close_price) / first_close_price) * 100
+                          # If valid_close_prices is empty or has only one element, monthly_change_percent remains None
+                      # If hist is empty, monthly_change_percent remains None
+
+                      # Explicitly convert any NaN float or string 'NaN' to None for JSON compatibility
+                      if isinstance(change_percent, float) and math.isnan(change_percent):
+                          change_percent = None
+                      elif isinstance(change_percent, str) and change_percent.lower() == 'nan':
+                          change_percent = None
+
+                      if isinstance(monthly_change_percent, float) and math.isnan(monthly_change_percent):
+                          monthly_change_percent = None
+                      elif isinstance(monthly_change_percent, str) and monthly_change_percent.lower() == 'nan':
+                          monthly_change_percent = None
+
+                      # Enhanced logging for why monthly_change_percent is None
+                      if monthly_change_percent is None:
+                          if hist is None or hist.empty:
+                              logging.warning(f"[{ticker}] monthly_change_percent is None: No historical data found for the last month.")
+                          elif 'Close' in hist and hist['Close'].dropna().empty:
+                              logging.warning(f"[{ticker}] monthly_change_percent is None: No valid close prices in historical data.")
+                          elif price is None or previous_close is None: # Check if price data itself is None
+                              logging.warning(f"[{ticker}] monthly_change_percent is None: Price or previous close is None, indicating primary data issue.")
+                          else:
+                              logging.warning(f"[{ticker}] monthly_change_percent is None: Reason unknown after initial checks. Raw value: {monthly_change_percent}")
+
+                       # If we successfully fetched data, break the retry loop
+                       break
+
+                  except Exception as e:
+                      error_message = f"Error fetching data for {ticker} (attempt {attempt + 1}): {e}"
+                      if attempt < max_retries - 1:
+                          logging.warning(f"{error_message}. Retrying in {initial_delay * (2 ** attempt)}s.")
+                          time.sleep(initial_delay * (2 ** attempt))
+                      else:
+                          print(error_message) # Ainda imprime para o console
+                          logging.error(f"{error_message}. Max retries reached.") # Agora também registra no arquivo de log
+                          # Fall through to return None values
+
+              return {
+                  "ticker": ticker,
+                  "name": info.get('longName', ticker) if 'info' in locals() and info else ticker,
+                  "price": round(price, 2) if price is not None else None,
+                  "currency": currency,
+                  "change_percent": round(change_percent, 2) if change_percent is not None else None,
+                  "monthly_change_percent": round(monthly_change_percent, 2) if monthly_change_percent is not None else None,
+                  "last_updated": last_updated_date
+               }
+
 
           def scrape_all_data():
+              """Scrapes data for all defined exchanges and their ETFs."""
               all_exchanges_data = []
               for exchange in EXCHANGES_DATA:
                   print(f"Fetching data for {exchange['name']}...")
                   etfs_data = []
-                  for ticker in exchange["etf_tickers"]:
+                  for ticker in exchange['etf_tickers']:
                       etf_info = fetch_etf_data(ticker)
                       etfs_data.append(etf_info)
-                      time.sleep(1)
+                      time.sleep(1) # Be polite to the API and avoid being blocked
 
                   exchange_data = {
-                      "name": exchange["name"],
-                      "code": exchange["code"],
-                      "country": exchange["country"],
+                      "name": exchange['name'],
+                      "code": exchange['code'],
+                      "country": exchange['country'],
                       "etfs": etfs_data
-                  }
-                  all_exchanges_data.append(exchange_data)
-              return all_exchanges_data
+                   }
+                   all_exchanges_data.append(exchange_data)
+                return all_exchanges_data
 
-          data = scrape_all_data()
-          with open("data.json", "w", encoding="utf-8") as f:
-              json.dump(data, f, ensure_ascii=False, indent=4)
-          print("Data scraping complete and saved to data.json")
+          if __name__ == "__main__":
+              # Limpar o arquivo de log antes de cada execução completa
+              with open('yfinance_errors.log', 'w') as f:
+                  f.write('')
+
+              data = scrape_all_data()
+              # Save data to a JSON file
+              with open('data.json', 'w', encoding='utf-8') as f:
+                  json.dump(data, f, ensure_ascii=False, indent=4)
+              print("Data scraping complete and saved to data.json")
+          
           EOF
 
       - name: Commit and push changes
