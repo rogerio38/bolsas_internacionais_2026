@@ -142,59 +142,59 @@ jobs:
                        # If we successfully fetched data, break the retry loop
                        break
 
-                  except Exception as e:
-                      error_message = f"Error fetching data for {ticker} (attempt {attempt + 1}): {e}"
-                      if attempt < max_retries - 1:
-                          logging.warning(f"{error_message}. Retrying in {initial_delay * (2 ** attempt)}s.")
-                          time.sleep(initial_delay * (2 ** attempt))
-                      else:
-                          print(error_message) # Ainda imprime para o console
-                          logging.error(f"{error_message}. Max retries reached.") # Agora também registra no arquivo de log
-                          # Fall through to return None values
+                   except Exception as e:
+                       error_message = f"Error fetching data for {ticker} (attempt {attempt + 1}): {e}"
+                       if attempt < max_retries - 1:
+                           logging.warning(f"{error_message}. Retrying in {initial_delay * (2 ** attempt)}s.")
+                           time.sleep(initial_delay * (2 ** attempt))
+                       else:
+                           print(error_message) # Ainda imprime para o console
+                           logging.error(f"{error_message}. Max retries reached.") # Agora também registra no arquivo de log
+                           # Fall through to return None values
 
-              return {
-                  "ticker": ticker,
-                  "name": info.get('longName', ticker) if 'info' in locals() and info else ticker,
-                  "price": round(price, 2) if price is not None else None,
-                  "currency": currency,
-                  "change_percent": round(change_percent, 2) if change_percent is not None else None,
-                  "monthly_change_percent": round(monthly_change_percent, 2) if monthly_change_percent is not None else None,
-                  "last_updated": last_updated_date
-               }
+               return {
+                   "ticker": ticker,
+                   "name": info.get('longName', ticker) if 'info' in locals() and info else ticker,
+                   "price": round(price, 2) if price is not None else None,
+                   "currency": currency,
+                   "change_percent": round(change_percent, 2) if change_percent is not None else None,
+                   "monthly_change_percent": round(monthly_change_percent, 2) if monthly_change_percent is not None else None,
+                   "last_updated": last_updated_date
+                }
 
 
-          def scrape_all_data():
-              """Scrapes data for all defined exchanges and their ETFs."""
-              all_exchanges_data = []
-              for exchange in EXCHANGES_DATA:
-                  print(f"Fetching data for {exchange['name']}...")
-                  etfs_data = []
-                  for ticker in exchange['etf_tickers']:
-                      etf_info = fetch_etf_data(ticker)
-                      etfs_data.append(etf_info)
-                      time.sleep(1) # Be polite to the API and avoid being blocked
+           def scrape_all_data():
+               """Scrapes data for all defined exchanges and their ETFs."""
+               all_exchanges_data = []
+               for exchange in EXCHANGES_DATA:
+                   print(f"Fetching data for {exchange['name']}...")
+                   etfs_data = []
+                   for ticker in exchange['etf_tickers']:
+                       etf_info = fetch_etf_data(ticker)
+                       etfs_data.append(etf_info)
+                       time.sleep(1) # Be polite to the API and avoid being blocked
 
-                  exchange_data = {
-                      "name": exchange['name'],
-                      "code": exchange['code'],
-                      "country": exchange['country'],
-                      "etfs": etfs_data
-                  }
-                  all_exchanges_data.append(exchange_data)
-                return all_exchanges_data
+                   exchange_data = {
+                       "name": exchange['name'],
+                       "code": exchange['code'],
+                       "country": exchange['country'],
+                       "etfs": etfs_data
+                   }
+                   all_exchanges_data.append(exchange_data)
+                 return all_exchanges_data
 
-          if __name__ == "__main__":
-              # Limpar o arquivo de log antes de cada execução completa
-              with open('yfinance_errors.log', 'w') as f:
-                  f.write('')
+           if __name__ == "__main__":
+               # Limpar o arquivo de log antes de cada execução completa
+               with open('yfinance_errors.log', 'w') as f:
+                   f.write('')
 
-              data = scrape_all_data()
-              # Save data to a JSON file
-              with open('data.json', 'w', encoding='utf-8') as f:
-                  json.dump(data, f, ensure_ascii=False, indent=4)
-              print("Data scraping complete and saved to data.json")
+               data = scrape_all_data()
+               # Save data to a JSON file
+               with open('data.json', 'w', encoding='utf-8') as f:
+                   json.dump(data, f, ensure_ascii=False, indent=4)
+               print("Data scraping complete and saved to data.json")
           
-          EOF
+           EOF
 
       - name: Commit and push changes
         run: |
