@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -180,8 +179,8 @@ jobs:
                       "code": exchange['code'],
                       "country": exchange['country'],
                       "etfs": etfs_data
-                   }
-                   all_exchanges_data.append(exchange_data)
+                  }
+                  all_exchanges_data.append(exchange_data)
                 return all_exchanges_data
 
           if __name__ == "__main__":
